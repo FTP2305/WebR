@@ -48,6 +48,8 @@ if (isset($_POST['eliminar_producto'])) {
 
     // Redirigir para evitar reenvío del formulario
     header("Location: /WebR/CarroCompras/carrito.php");
+
+    
     exit();
 }
 

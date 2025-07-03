@@ -135,13 +135,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['finalizar_compra_btn'
         $stmt_update_venta_estado->close();
 
         $conn->commit();
+        require_once 'generar_factura.php';
+        $generador = new GeneradorFacturas();
+
+        try {
+            $pdf_path = $generador->generarYEnviarFactura($id_venta, $conn);
+            $_SESSION['correo_enviado'] = true;
+        } catch (Exception $e) {
+            error_log("Error al enviar factura: " . $e->getMessage());
+            $_SESSION['correo_enviado'] = false;
+        }
 
         $_SESSION['compra_finalizada'] = true;
         $_SESSION['id_ultima_venta'] = $id_venta;
-        $_SESSION['total_ultima_compra'] = $total_compra;
-
-        header('Location: finalizar_compra.php?status=success');
+        header('Location: confirmacion_pago.php');
         exit();
+
+        
 
     } catch (Exception $e) {
         $conn->rollback();

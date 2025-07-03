@@ -1,27 +1,22 @@
 <?php
 session_start();
-include '../Includes/conexion.php'; // Asegúrate de que esta ruta sea correcta
+include '../Includes/conexion.php'; 
 
 $conexion = new Conexion();
 $conn = $conexion->getConectar();
 
-// 1. Verificar si el cliente está logueado
 if (!isset($_SESSION['id_cliente'])) {
-    // Redirigir al login si no está logueado
     $_SESSION['mensaje_error'] = "Debes iniciar sesión para ver tu historial de compras.";
-    header('Location: Login.php'); // Asegura que esta ruta sea correcta
-    exit();
+    header('Location: Login.php'); 
 }
 
 $id_cliente = $_SESSION['id_cliente'];
 
-// Variable para almacenar los pedidos del cliente
+
 $pedidos = [];
-$mensaje_historial = ""; // Para mensajes de éxito o no hay pedidos
+$mensaje_historial = ""; 
 
 try {
-    // 2. Obtener las ventas (pedidos) del cliente desde la base de datos
-    // Ordenamos por fecha descendente para mostrar los más recientes primero
     $sql_ventas = "SELECT id_venta, fecha, total, estado 
                    FROM ventas 
                    WHERE id_cliente = ? 
@@ -38,7 +33,6 @@ try {
     if ($result_ventas->num_rows > 0) {
         while ($venta = $result_ventas->fetch_assoc()) {
             $id_venta = $venta['id_venta'];
-            // Para cada venta, obtener sus productos detallados
             $sql_detalle = "SELECT p.nombre, p.precio, p.imagen_url, dv.cantidad, dv.subtotal
                             FROM detalle_venta dv
                             JOIN productos p ON dv.id_producto = p.id_producto
@@ -56,20 +50,20 @@ try {
             while ($producto_detalle = $result_detalle->fetch_assoc()) {
                 $venta['productos'][] = $producto_detalle;
             }
-            $stmt_detalle->close(); // Cierra el statement de detalle
+            $stmt_detalle->close(); 
 
-            $pedidos[] = $venta; // Añade la venta con sus productos al array de pedidos
+            $pedidos[] = $venta; 
         }
     } else {
         $mensaje_historial = "Aún no tienes compras en tu historial. ¡Anímate a explorar nuestros productos!";
     }
-    $stmt_ventas->close(); // Cierra el statement de ventas
+    $stmt_ventas->close(); 
 
 } catch (Exception $e) {
-    // Manejo de errores de la base de datos
+    
     $mensaje_historial = "Error al cargar tu historial de compras: " . $e->getMessage();
 } finally {
-    // Asegurarse de que la conexión se cierre
+
     if (isset($conn) && $conn->ping()) {
         $conn->close();
     }
@@ -102,7 +96,7 @@ try {
                 Hola! <?php echo htmlspecialchars($_SESSION['nombre']); ?>
             </span>
             <a href="http://localhost/WebR/Clientes/Cliente.php" style="margin-left: 20px;">
-                <img src="img/loginsinfondo.png" alt="Ver Perfil" class="icono">
+                <img src="/WebR/img/loginsinfondo.png" alt="Ver Perfil" class="icono">
             </a>
             <a href="/WebR/Clientes/logout.php" style="margin-left: 20px;">
                 <img src="/WebR/img/cerrarsesion1-removebg-preview.png" alt="Cerrar sesión" class="icono">
@@ -112,7 +106,7 @@ try {
                 <img src="/WebR/img/loginsinfondo.png" alt="Login" class="icono">
             </a>
             <?php endif; ?>
-            <a href="/WebR/CarroCompras/historial_compras.php"> <img src="img/historial de compras.png" alt="Historial" class="icono">
+            <a href="/WebR/CarroCompras/historial_compras.php"> <img src="/WebR/img/historial de compras.png" alt="Historial" class="icono">
             </a>
             <a href="/WebR/CarritoCompras/carrito.php">
                 <img src="/WebR/img/carrocomprassinfondo.png" alt="Carro de Compras" class="icono">
@@ -164,7 +158,7 @@ try {
                                     <tbody>
                                         <?php foreach ($pedido['productos'] as $producto): ?>
                                             <tr>
-                                            <td class="product-info-cell" data-label="Producto:">  <img src="<?php echo htmlspecialchars($producto['imagen_url']); ?>" alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
+                                            <td class="product-info-cell" data-label="Producto:">  <img src="/WebR/<?php echo htmlspecialchars($producto['imagen_url']); ?>" alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
                                             <span><?php echo htmlspecialchars($producto['nombre']); ?></span>
                                             </td>
                                             <td data-label="Cantidad:"><?php echo htmlspecialchars($producto['cantidad']); ?></td>

@@ -63,7 +63,7 @@ if ($result_categorias) {
 if (isset($_POST['agregar_al_carrito'])) {
     if (!isset($_SESSION['id_cliente'])) {
         $_SESSION['mensaje_error'] = "Debes iniciar sesión para agregar productos al carrito.";
-        header('Location: http://localhost/AlterWeb/Login.php');
+        header('Location: http://localhost/WebR/Clientes/Login.php');
         exit();
     }
 

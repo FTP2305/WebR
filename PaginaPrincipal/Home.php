@@ -52,21 +52,21 @@ session_start();  // Verificar sesión del usuario
           <span style="color:black; font-weight: bold; font-size: 20px; margin-right:10px;">
             Hola! <?php echo htmlspecialchars($_SESSION['nombre']); ?>
           </span>
-          <a href="http://localhost/AlterWeb/Roles/Cliente.php" style="margin-left: 20px;">
+          <a href="http://localhost/WebR/Clientes/Cliente.php" style="margin-left: 20px;">
             <img src="/WebR/img/loginsinfondo.png" alt="Ver Perfil" class="icono">
           </a>
           <a href="logout.php" style="margin-left: 20px;">
             <img src="/WebR/img/cerrarsesion1-removebg-preview.png" alt="Cerrar sesión" class="icono">
           </a>
         <?php else: ?>
-          <a href="http://localhost/AlterWeb/Roles/Login.php">
+          <a href="http://localhost/WebR/Clientes/Login.php">
             <img src="/WebR/img/loginsinfondo.png" alt="Login" class="icono">
           </a>
         <?php endif; ?>
-        <a href="historial_compras.php">
+        <a href="/WebR/CarroCompras/historial_compras.php">
           <img src="/WebR/img/historial de compras.png" alt="Historial" class="icono">
         </a>
-        <a href="carrito.php">
+        <a href="/WebR/CarroCompras/carrito.php">
           <img src="/WebR/img/carrocomprassinfondo.png" alt="Carro de Compras" class="icono">
         </a>
       </div>
