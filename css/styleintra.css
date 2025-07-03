@@ -1,0 +1,219 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 1000px;
+    width: 90%;
+}
+
+.illustration-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    background-color: #e6f7ff;
+}
+
+.illustration-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+.auth-section {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.titishop-logo {
+    max-width: 180px; 
+    margin-bottom: 15px;
+}
+
+.auth-header h2 {
+    font-size: 2.2em;
+    color: #007bff; 
+    margin-bottom: 10px;
+}
+
+.auth-header p {
+    font-size: 1em;
+    color: #666;
+}
+
+
+.auth-form p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+}
+
+.highlight {
+    color: #007bff;
+    font-weight: 700;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #555;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+
+.input-wrapper input[type="text"],
+.input-wrapper input[type="email"],
+.input-wrapper input[type="password"],
+.input-wrapper select {
+    width: calc(100% - 40px); 
+    padding: 12px 15px;
+    padding-right: 40px; 
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.input-wrapper select:not(.has-icon) {
+    width: 100%;
+    padding-right: 15px; 
+}
+
+
+.input-wrapper input[type="text"]:focus,
+.input-wrapper input[type="email"]:focus,
+.input-wrapper input[type="password"]:focus,
+.input-wrapper select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.input-wrapper .icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    cursor: pointer;
+}
+
+.hint {
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 5px;
+    display: block;
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    margin-bottom: 25px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.95em;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+
+.btn-auth {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-auth.register { 
+    background-color: #28a745; 
+}
+
+.btn-auth.register:hover {
+    background-color: #218838;
+}
+
+.btn-auth:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .illustration-section {
+        display: none; 
+    }
+
+    
+    .auth-section {
+        padding: 30px;
+    }
+
+    /* Renombramos */
+    .auth-header h2 {
+        font-size: 1.8em;
+    }
+}
+
+
+.error-message, .success-message {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.centered {
+    text-align: center;
+    margin-top: 20px; 
+}

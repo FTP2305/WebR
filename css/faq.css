@@ -1,0 +1,154 @@
+main {
+    padding-top: 130px; /* Ajusta según la altura de tu navbar fijo */
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.contenedor-central {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #f0ecec;
+    padding: 30px;
+    box-shadow: 0 2px 8px gray;
+}
+
+.contenedor-central1 {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: rgb(201, 199, 199);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px black;
+}
+
+.contenedor-titular {
+    width: 70%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px gray;
+}
+
+.texto-titu {
+    text-align: center;
+}
+
+.p {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.img {
+    margin-top: 18px;
+    margin-left: 30px;
+    border-radius: 10px;
+    margin-bottom: 22px;
+}
+
+.contenedor-horizontal {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+table {
+    overflow: hidden;
+    width: 270px;
+    box-shadow: 0 2px 8px gray;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: white;
+}
+
+.color {
+    background-color: #ffcc00;
+    font-weight: bold;
+}
+
+.contenedor-izquierda {
+    width: 40%;
+    margin-top: 30px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px white;
+}
+
+.contenedor-izquierda2 {
+    width: 60%;
+    margin-top: 30px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px white;
+}
+
+.enfila {
+    display: flex;
+    gap: 20px;
+}
+
+.enfila1 {
+    display: flex;
+    gap: 160px;
+}
+
+.enfila2 {
+    display: flex;
+    gap: 80px;
+}
+
+.enfila3 {
+    display: flex;
+    gap: 30px;
+}
+
+.imgpequeña {
+    width: 10%;
+}
+
+.campo-largo1 {
+    width: 480px;
+}
+
+.campo-largo2 {
+    width: 140px;
+}
+
+.campo-largo3 {
+    width: 480px;
+    height: 90px;
+}
+
+.miboton {
+    width: 100px;
+    height: 40px;
+    box-shadow: 0 2px 8px gray;
+    background-color: #e9b408;
+    border-radius: 20px;
+}
+
+.centro-boton {
+    display: flex;
+    justify-content: center;
+}
+
+.imagen-superpuesta1 {
+    position: absolute;
+    top: 430px;
+    left: 1000px;
+    bottom: 10px;
+    width: 450px;
+    z-index: 999;
+}

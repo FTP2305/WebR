@@ -1,0 +1,608 @@
+/* carrito.css - Diseño de Carrito Basado en Tarjetas (Grid/Flexbox) */
+
+/* --- Variables CSS (Para una personalización fácil) --- */
+:root {
+    --primary-blue: #007BFF;
+    --accent-yellow: #FFD100;
+    --success-green: #28A745;
+    --danger-red: #DC3545;
+    --text-dark: #343A40;
+    --text-medium: #495057;
+    --text-light: #6C757D;
+    --bg-light: #f8f9fa;
+    --border-light: #e9ecef;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+}
+
+/* --- Estilos Generales del Contenedor Principal del Carrito --- */
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Fuente más moderna */
+    background-color: var(--bg-light);
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+.carrito-page {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Sombra más profunda */
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.carrito-page h1 {
+    text-align: center;
+    font-size: 3.5rem; /* Título grande */
+    color: var(--text-dark);
+    margin-bottom: 50px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.carrito-page h1::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background-color: var(--accent-yellow);
+    border-radius: 3px;
+}
+
+/* --- Contenedor principal de la lista de productos y el resumen --- */
+.carrito-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px; /* Espacio entre la lista y el resumen */
+}
+
+/* --- Lista de Productos (Contenedor principal para las tarjetas) --- */
+.lista-productos {
+    flex: 2; /* Ocupa más espacio */
+    min-width: 65%; /* Ancho mínimo para mantener la estructura en desktop */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio entre cada tarjeta de producto */
+    padding: 0; /* No padding aquí, las tarjetas lo tienen */
+}
+
+/* --- Encabezados de la Lista de Productos (CSS Grid) --- */
+.lista-productos-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.2fr 1fr 0.8fr; /* Definición de columnas */
+    gap: 20px;
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 18px 25px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.15rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-item {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    /* Ajuste de alineación para columnas específicas */
+    &:nth-child(2), /* Precio */
+    &:nth-child(3), /* Cantidad */
+    &:nth-child(4), /* Subtotal */
+    &:nth-child(5) { /* Acciones */
+        justify-content: center;
+    }
+    &:first-child { /* Producto */
+        justify-content: flex-start;
+    }
+}
+
+/* --- Cada Tarjeta de Producto en el Carrito --- */
+.producto-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.2fr 1fr 0.8fr; /* Mismas columnas que el encabezado */
+    gap: 20px;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 20px 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px var(--shadow-light); /* Sombra para cada tarjeta */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.producto-item:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 30px var(--shadow-medium);
+}
+
+/* --- Estilos para cada columna de la tarjeta de producto --- */
+.producto-info-cell {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.producto-info-cell img {
+    width: 100px; /* Imagen más grande */
+    height: 100px;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 1px solid var(--border-light);
+    padding: 5px;
+    flex-shrink: 0;
+}
+
+.producto-info-cell span {
+    flex-grow: 1;
+    white-space: normal;
+    word-break: break-word;
+    font-size: 1.05rem;
+}
+
+.producto-precio,
+.producto-subtotal {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-blue); /* Resaltar precio y subtotal */
+    text-align: center; /* Centrar el texto en su columna */
+}
+
+/* Contenedor de cantidad y botón Actualizar */
+.producto-cantidad {
+    display: flex; /* Para centrar el form */
+    justify-content: center;
+    align-items: center;
+}
+
+.cantidad-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap; /* Intenta mantenerlos en una línea */
+}
+
+.input-cantidad {
+    width: 70px;
+    padding: 10px 12px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.producto-acciones {
+    display: flex; /* Para centrar el botón eliminar */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Botones de acción (Eliminar y Actualizar) */
+.btn-actualizar-cantidad,
+.btn-eliminar {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.btn-actualizar-cantidad {
+    background-color: var(--accent-yellow);
+    color: var(--text-dark);
+}
+
+.btn-actualizar-cantidad:hover {
+    background-color: #e6bb00;
+    transform: translateY(-2px);
+}
+
+.btn-eliminar {
+    background-color: var(--danger-red);
+    color: white;
+}
+
+.btn-eliminar:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+/* --- Resumen del Pedido --- */
+.resumen-pedido {
+    flex: 1;
+    min-width: 320px;
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px var(--shadow-light);
+    height: fit-content;
+}
+
+.resumen-pedido h2 {
+    font-size: 2.2rem;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 18px;
+}
+
+.resumen-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.15rem;
+    margin-bottom: 18px;
+    color: var(--text-medium);
+}
+
+.resumen-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    border-top: 2px solid var(--border-light);
+    padding-top: 25px;
+    margin-top: 30px;
+}
+
+.btn-finalizar,
+.btn-continuar {
+    display: block;
+    width: 100%;
+    padding: 18px 25px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-finalizar {
+    background-color: var(--success-green);
+    color: white;
+    margin-top: 35px;
+    margin-bottom: 18px;
+}
+
+.btn-finalizar:hover {
+    background-color: #218838;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.btn-continuar {
+    background-color: var(--text-light);
+    color: white;
+}
+
+.btn-continuar:hover {
+    background-color: #5a6268;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* --- Carrito Vacío --- */
+.carrito-vacio {
+    text-align: center;
+    padding: 100px 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-top: 50px;
+}
+
+.carrito-vacio p {
+    font-size: 2rem;
+    color: var(--text-light);
+    margin-bottom: 40px;
+}
+
+.btn-continuar-comprando {
+    display: inline-block;
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 16px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.15rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-continuar-comprando:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1024px) {
+    .lista-productos-header, .producto-item {
+        grid-template-columns: 1.8fr 0.8fr 1.2fr 0.8fr 0.8fr; /* Ajuste de columnas para pantallas medianas */
+        gap: 15px;
+        padding: 15px 20px;
+    }
+    .producto-info-cell img {
+        width: 80px;
+        height: 80px;
+    }
+    .producto-info-cell span {
+        font-size: 1rem;
+    }
+    .producto-precio, .producto-subtotal {
+        font-size: 1rem;
+    }
+    .input-cantidad {
+        width: 60px;
+        font-size: 0.95rem;
+        padding: 8px 10px;
+    }
+    .btn-actualizar-cantidad, .btn-eliminar {
+        padding: 8px 14px;
+        font-size: 0.9rem;
+    }
+    .carrito-page {
+        margin: 40px auto;
+        padding: 30px;
+    }
+    .carrito-page h1 {
+        font-size: 2.8rem;
+        margin-bottom: 40px;
+    }
+    .resumen-pedido h2 {
+        font-size: 2rem;
+    }
+    .resumen-item, .resumen-total {
+        font-size: 1.1rem;
+    }
+    .btn-finalizar, .btn-continuar {
+        padding: 15px 22px;
+        font-size: 1.05rem;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .carrito-container {
+        flex-direction: column; /* Apila la lista y el resumen */
+        gap: 30px;
+    }
+
+    .lista-productos {
+        min-width: unset; /* Quita el min-width en móviles */
+    }
+
+    .carrito-page {
+        margin: 25px auto;
+        padding: 20px;
+    }
+
+    .carrito-page h1 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
+    .carrito-page h1::after {
+        width: 70px;
+        height: 3px;
+    }
+
+    /* Ocultar encabezados de la tabla para móvil y reorganizar items */
+    .lista-productos-header {
+        display: none; /* Ocultar los encabezados de columna en móvil */
+    }
+
+    .producto-item {
+        grid-template-columns: 1fr 1fr; /* 2 columnas en móvil */
+        grid-template-areas:
+            "info info"
+            "qty price"
+            "subtotal actions"; /* Definir áreas para un mejor control */
+        gap: 15px;
+        padding: 15px;
+        flex-direction: column; /* Asegura que la tarjeta se apile internamente si es necesario */
+        align-items: flex-start; /* Alinea los items a la izquierda por defecto */
+    }
+
+    /* Asignar elementos a las áreas de la grilla */
+    .producto-info-cell {
+        grid-area: info;
+        flex-direction: row; /* Mantener imagen y texto en fila dentro del área "info" */
+        align-items: center;
+        gap: 10px;
+        width: 100%; /* Ocupa todo el ancho del área */
+    }
+    .producto-info-cell img {
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
+    }
+    .producto-info-cell span {
+        font-size: 0.95rem;
+        flex-grow: 1; /* Permite que el nombre crezca */
+    }
+
+    .producto-cantidad {
+        grid-area: qty;
+        justify-content: flex-start; /* Alinea a la izquierda en su área */
+        flex-direction: column; /* Apila input y botón Actualizar */
+        align-items: flex-start;
+        gap: 5px;
+    }
+    .cantidad-form {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        width: 100%;
+    }
+    .input-cantidad {
+        width: 80px; /* Un poco más de ancho para ser fácil de tocar */
+        padding: 6px 8px;
+        font-size: 0.9rem;
+    }
+    .btn-actualizar-cantidad {
+        width: 100%;
+        max-width: 120px; /* Limitar ancho del botón */
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+
+
+    .producto-precio {
+        grid-area: price;
+        text-align: right; /* Alinea el precio a la derecha en su área */
+        font-size: 1.05rem;
+    }
+    .producto-subtotal {
+        grid-area: subtotal;
+        text-align: left; /* Alinea el subtotal a la izquierda en su área */
+        font-size: 1.05rem;
+    }
+
+    .producto-acciones {
+        grid-area: actions;
+        justify-content: flex-end; /* Alinea el botón eliminar a la derecha en su área */
+        width: 100%;
+    }
+    .btn-eliminar {
+        width: auto; /* Se ajusta al contenido */
+        padding: 8px 14px;
+        font-size: 0.85rem;
+    }
+
+
+    .resumen-pedido {
+        padding: 20px;
+    }
+
+    .resumen-pedido h2 {
+        font-size: 1.8rem;
+    }
+
+    .resumen-item, .resumen-total {
+        font-size: 1rem;
+    }
+
+    .btn-finalizar, .btn-continuar {
+        padding: 12px 18px;
+        font-size: 1rem;
+    }
+
+    .carrito-vacio p {
+        font-size: 1.4rem;
+    }
+    .btn-continuar-comprando {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .carrito-page {
+        padding: 15px;
+        margin: 15px auto;
+    }
+    .carrito-page h1 {
+        font-size: 2rem;
+        margin-bottom: 25px;
+    }
+    .carrito-page h1::after {
+        width: 40px;
+        height: 2px;
+    }
+
+    .lista-productos {
+        gap: 15px; /* Menos espacio entre tarjetas */
+    }
+
+    .producto-item {
+        grid-template-columns: 1fr; /* Una sola columna en móvil muy pequeño */
+        grid-template-areas:
+            "info"
+            "price"
+            "qty"
+            "subtotal"
+            "actions"; /* Reordenar áreas verticalmente */
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .producto-info-cell {
+        flex-direction: column; /* Apila imagen y nombre en vertical */
+        align-items: center;
+        text-align: center;
+        gap: 8px;
+    }
+    .producto-info-cell img {
+        width: 50px;
+        height: 50px;
+    }
+    .producto-info-cell span {
+        font-size: 0.9rem;
+    }
+
+    .producto-precio, .producto-subtotal {
+        text-align: center; /* Centrar todo el texto en una sola columna */
+        font-size: 1rem;
+    }
+
+    .producto-cantidad {
+        justify-content: center; /* Centrar el bloque de cantidad */
+        align-items: center;
+    }
+    .cantidad-form {
+        flex-direction: column;
+        align-items: center;
+    }
+    .input-cantidad {
+        width: 70px; /* Mantener un tamaño usable */
+    }
+    .btn-actualizar-cantidad {
+        max-width: 120px; /* Mantener el botón centrado y con un ancho razonable */
+    }
+
+    .producto-acciones {
+        justify-content: center; /* Centrar el botón eliminar */
+    }
+    .btn-eliminar {
+        width: auto; /* Que se ajuste al contenido */
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    .resumen-pedido {
+        padding: 15px;
+    }
+
+    .resumen-pedido h2 {
+        font-size: 1.5rem;
+    }
+
+    .resumen-item, .resumen-total {
+        font-size: 0.9rem;
+    }
+
+    .btn-finalizar, .btn-continuar {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.contenedor {
+    width: 100%;
+}
+
+.menu {
+    background-color: #1e2f3a;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menuIzquierda .title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.menuDerecha .menus a {
+    margin-left: 15px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menuDerecha .menus a:hover {
+    text-decoration: underline;
+}
+
+.contenido {
+    padding: 20px;
+}
+
+.centrar {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tabla {
+    display: flex;
+    justify-content: center;
+}
+
+.tablaLeft {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #1e2f3a;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

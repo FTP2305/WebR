@@ -1,0 +1,257 @@
+@media (max-width: 1024px) {
+    .container_login {
+        width: 90%;
+        max-width: 300px;
+        padding: 1.5rem 1rem;
+        margin: 0 auto;
+    }
+
+    .logo-central {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .logo-central img {
+        width: 140px;
+        max-width: 100%;
+        display: inline-block;
+    }
+
+    .login-box {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Contenedor Registro-Formulario */
+    .form-container {
+        width: 80%;
+        max-width: 300px;
+        padding: 1.5rem;
+    }
+    .form-container {
+        max-width: 190px;
+    }
+    .logo-central {
+        text-align: center;
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+    }
+
+    .logo-central img {
+        width: 100px;
+        height: auto;
+    }
+    h2 {
+        font-size: 19px;
+    }
+    .login-box {
+        width: 80%;
+        padding: 1.5rem;
+        box-sizing: border-box;
+    }
+
+    .forgot-link {
+        display: block;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .btn {
+        font-size: 14px;
+    }
+    label {
+        font-size: 14px;
+    }
+    /* Barra de navegación */
+    .logo {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 10px;
+    }
+    a {
+        font-size: 16px;
+    }
+    .user-menu {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .user-menu img.icono {
+        width: 30px;
+        height: auto;
+    }
+
+    /* NOSOTROS */
+    .nosotros {
+        padding: 60px 50px;
+        margin: 48px 15px 10px 15px;
+    }
+
+    /* PRODUCTOS */
+    .productos-page {
+        margin-top: 5%;
+    }
+    /* FOOTER */
+    .footer-columns h4 {
+        font-size: 16px;
+    }
+    .footer-columns p {
+        font-size: 14px;
+    }
+
+    /* FQA */
+    .contenedor-central {
+        margin-top: 8%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Barra de navegación */
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    /* Login */
+    h3 {
+        margin: 5px;
+    }
+    .container_login {
+        margin-top: 40%;
+    }
+    /* Registro */
+    .form-container {
+        margin-top: 50%;
+    }
+    /* HOME */
+    .tmñbanner {
+        width: 100%;
+        height: auto;
+    }
+    .banner {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .banner-img, .banner-texto {
+        flex: 1;
+        width: 100%;
+        margin: 0;
+    }
+    .banner-texto h1 {
+        font-size: 40px;
+    }
+    .banner-texto button {
+        font-size: 20px;
+    }
+    .marcas-grid {
+        gap: 50px;
+    }
+    .texto-oferta {
+        padding: 5px;
+    }
+    .texto-oferta h1 {
+        font-size: 25px;
+    }
+    .texto-oferta p {
+        font-size: 20px;
+    }
+
+    .productos-destacados {
+        flex-direction: column;
+    }
+    .texto-productodestacado p {
+        font-size: 23px;
+    }
+    .texto-centrado {
+        font-size: 24px;
+    }
+    .texto-inferior {
+        font-size: 12px;
+    }
+    footer {
+        text-align: center;
+    }
+
+    .footer-columns {
+        flex-direction: column;
+    }
+
+    .footer-columns > div {
+        flex: 1 1 100%;
+        margin: 10px 0;
+    }
+
+    .redes-sociales {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    /* NOSOTROS */
+    .nosotros {
+        margin-top: 55%;
+        padding: 60px 60px;
+    }
+    .texto h1 {
+        text-align: center;
+        font-size: 22px;
+    }
+    .texto h2 {
+        text-align: center;
+        font-size: 19px;
+    }
+    .texto p {
+        text-align: justify;
+        font-size: 16px;
+    }
+    .redes-sociales img {
+        width: 40px;
+    }
+
+    /* PRODUCTOS */
+    .productos-page {
+        margin-top: 50%;
+    }
+
+    /* FQA */
+    .contenedor-central {
+        margin-top: 55%;
+    }
+    .img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 22px;
+        margin-left: 0;
+        padding: 0;
+        margin-top: 0px;
+    }
+
+    .texto-titu {
+        font-size: 20px;
+    }
+    .contenedor-titular {
+        padding: 9px;
+    }
+    .p {
+        font-size: 16px;
+    }
+    .color {
+        font-size: 11px;
+    }
+    th {
+        font-size: 11px;
+    }
+    /* FOOTER */
+    .footer-columns h4 {
+        font-size: 16px;
+    }
+    .footer-columns p {
+        font-size: 14px;
+    }
+}

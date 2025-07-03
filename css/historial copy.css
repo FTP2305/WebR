@@ -1,0 +1,266 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+
+header.navbar {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    text-decoration: none;
+    color: white;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin-left: 25px;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    color: #d4edda;
+}
+
+
+main.dashboard-content {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 30px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+.sales-history-section {
+    margin-bottom: 40px;
+}
+
+.sales-history-section h1 {
+    font-size: 2.5em;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.sales-history-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.sales-history-section th,
+.sales-history-section td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.sales-history-section th {
+    background-color: #007bff;
+    color: white;
+}
+
+.sales-history-section td {
+    background-color: #f9f9f9;
+}
+
+.sales-history-section a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sales-history-section a:hover {
+    text-decoration: underline;
+}
+
+
+.sale-details-section {
+    margin-bottom: 40px;
+}
+
+.sale-details-section h1 {
+    font-size: 2.5em;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.sale-details-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.sale-details-section th,
+.sale-details-section td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.sale-details-section th {
+    background-color: #007bff;
+    color: white;
+}
+
+.sale-details-section td {
+    background-color: #f9f9f9;
+}
+
+
+.mensaje {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    color: green;
+}
+
+.mensaje.error {
+    color: red;
+}
+
+
+.submit-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    text-align: center;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+
+select, input[type="number"], input[type="text"], input[type="email"] {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+select:focus, input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+
+.product-table {
+    margin-top: 40px;
+}
+
+.product-table h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.product-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product-table th,
+.product-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.product-table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.product-table td {
+    background-color: #f9f9f9;
+}
+
+.product-table tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+.product-table td a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.product-table td a:hover {
+    text-decoration: underline;
+}
+.filter-section {
+    background-color: var(--background-light);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--spacing-lg);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: var(--spacing-md);
+    align-items: end; 
+}
+
+.filter-section .form-group {
+    margin-bottom: 0; 
+}
+
+.filter-section .filter-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.filter-section .submit-btn,
+.filter-section .action-btn {
+    width: auto; 
+    padding: var(--spacing-sm) var(--spacing-lg); 
+}
