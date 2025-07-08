@@ -35,7 +35,7 @@ session_start();
           <img src="/WebR/img/cerrarsesion1-removebg-preview.png" alt="Cerrar sesión" class="icono" >
         </a>
       <?php else: ?>
-        <a href="http://localhost/AlterWeb/Roles/Login.php">
+        <a href="http://localhost/WebR/Clientes/Login.php">
           <img src="/WebR/img/loginsinfondo.png" alt="Usuario" class="icono">
         </a>
       <?php endif; ?>

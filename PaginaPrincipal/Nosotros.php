@@ -30,14 +30,14 @@ session_start(); // Verificar sesión del usuario
                     <span>
                         Hola! <?php echo htmlspecialchars($_SESSION['nombre']); ?>
                     </span>
-                    <a href="http://localhost/AlterWeb/Roles/Cliente.php">
+                    <a href="http://localhost/WebR/Clientes/Cliente.php">
                         <img src="/WebR/img/loginsinfondo.png" alt="Ver Perfil" class="icono">
                     </a>
                     <a href="logout.php">
                         <img src="/WebR/img/cerrarsesion1-removebg-preview.png" alt="Cerrar sesión" class="icono">
                     </a>
                 <?php else: ?>
-                    <a href="http://localhost/AlterWeb/Roles/Login.php">
+                    <a href="http://localhost/WebR/Clientes/Login.php">
                         <img src="/WebR/img/loginsinfondo.png" alt="Login" class="icono">
                     </a>
                 <?php endif; ?>
