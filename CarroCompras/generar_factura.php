@@ -49,38 +49,41 @@ class GeneradorFacturas {
         return $pdf_path;
     }
 
-    private function enviarPorCorreo($correo, $nombre, $pdf_path) {
-        $boundary = md5(time());
-        $headers = "From: felixtintaya2305@titi-shop.com\r\n";
-        $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
+    private function enviarPorCorreo($correo, $nombre, $pdf_path): bool {
+    // Cargar PHPMailer correctamente
+    require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+    require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/SMTP.php';
+    require_once __DIR__ . '/../vendor/phpmailer/phpmailer/src/Exception.php';
+
+    $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+    
+    try {
+        // Configuración SMTP para Gmail
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'felixtintaya2305@gmail.com';
+        $mail->Password = 'rxbu zvaa rmku qxfk';
+        $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        // Configuración del correo
+        $mail->setFrom('felixtintaya2305@gmail.com', 'TITI SHOP');
+        $mail->addAddress($correo, $nombre);
+        $mail->isHTML(true);
+        $mail->Subject = 'Factura de tu compra en TITI SHOP';
+        $mail->Body = 'Hola '.$nombre.',<br>Gracias por tu compra. Adjunto encontrarás tu factura.';
         
-        // Cuerpo del mensaje
-        $message = "--$boundary\r\n";
-        $message .= "Content-Type: text/plain; charset=\"UTF-8\"\r\n";
-        $message .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
-        $message .= "Hola $nombre,\r\n\r\n";
-        $message .= "Gracias por tu compra en TITI SHOP. Adjuntamos tu factura.\r\n\r\n";
-        $message .= "¡Esperamos verte pronto de nuevo!\r\n";
+        // Adjunta el PDF
+        $mail->addAttachment($pdf_path, 'factura.pdf');
+
+        // Envía el correo y retorna true si fue exitoso
+        return $mail->send();
         
-        // Adjuntar PDF
-        $file_content = file_get_contents($pdf_path);
-        $file_encoded = chunk_split(base64_encode($file_content));
-        
-        $message .= "--$boundary\r\n";
-        $message .= "Content-Type: application/pdf; name=\"factura.pdf\"\r\n";
-        $message .= "Content-Transfer-Encoding: base64\r\n";
-        $message .= "Content-Disposition: attachment\r\n\r\n";
-        $message .= "$file_encoded\r\n";
-        $message .= "--$boundary--";
-        
-        // Enviar correo
-        mail(
-            $correo,
-            "Factura de tu compra en TITI SHOP",
-            $message,
-            $headers
-        );
+    } catch (Exception $e) {
+        error_log("Error al enviar correo: " . $e->getMessage());
+        return false;
     }
+}
 }
 ?>
