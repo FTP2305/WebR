@@ -11,9 +11,14 @@ session_start();  // Verificar sesión del usuario
   <link rel="stylesheet" href="/WebR/css/Home.css">
   <link rel="stylesheet" href="/WebR/css/components.css">
   <link rel="stylesheet" href="/WebR/css/base.css">
-  <link rel="stylesheet" href="/WebR/css/productos.css"> 
   <link rel="stylesheet" href="/WebR/css/estilo.css">    
   <link rel="stylesheet" href="/WebR/css/chatbot.css">
+<link rel="stylesheet" href="/WebR/css/productos.css">
+<link rel="stylesheet" href="/WebR/css/contactanos.css">
+<link rel="stylesheet" href="/WebR/css/nosotros.css"> 
+
+<link rel="stylesheet" href="/WebR/css/intranet.css">
+
 </head>
 <body>
   <!-- CHATBOT -->
@@ -43,9 +48,9 @@ session_start();  // Verificar sesión del usuario
   <img src="/WebR/img/LOGOTITI.jpeg" alt="Logo TITI SHOP" class="logo">
   <h3><a href="/WebR/PaginaPrincipal/Home.php" class="nav-link" data-url="/WebR/PaginaPrincipal/Home.php">Inicio</a></h3>
   <h3><a href="/WebR/PaginaPrincipal/Productos.php" class="nav-link" data-url="/WebR/PaginaPrincipal/ProductosAjax.php">Productos</a></h3>
-  <h3><a href="/WebR/PaginaPrincipal/Contactanos.php" class="nav-link" data-url="/WebR/PaginaPrincipal/Contactanos.php">Contáctanos</a></h3>
-  <h3><a href="/WebR/PaginaPrincipal/Nosotros.php" class="nav-link" data-url="/WebR/PaginaPrincipal/Nosotros.php">Nosotros</a></h3>
-  <h3><a href="/WebR/PaginaPrincipal/Preguntas.php" class="nav-link" data-url="/WebR/PaginaPrincipal/Preguntas.php">Preguntas Frecuentes</a></h3>
+  <h3><a href="/WebR/PaginaPrincipal/Contactanos.php" class="nav-link" data-url="/WebR/PaginaPrincipal/ContactanosAjax.php">Contáctanos</a></h3>
+  <h3><a href="/WebR/PaginaPrincipal/Nosotros.php" class="nav-link" data-url="/WebR/PaginaPrincipal/NosotrosAjax.php">Nosotros</a></h3>
+  <h3><a href="/WebR/PaginaPrincipal/Preguntas.php" class="nav-link" data-url="/WebR/PaginaPrincipal/PreguntasAjax.php">Preguntas Frecuentes</a></h3>
   <h3><a href="/WebR/PaginaPrincipal/intranet.php" class="nav-link" data-url="/WebR/PaginaPrincipal/intranet.php">Intranet</a></h3>
 
       <div class="user-menu">
@@ -204,10 +209,29 @@ document.addEventListener('DOMContentLoaded', function () {
   const contenedor = document.getElementById('contenido-dinamico');
   const homeHTML = contenedor.innerHTML;
 
-  // ✅ Función que aplica los listeners a todos los enlaces .nav-link
+  function cargarCSSSegunRuta(path) {
+    const rutasCSS = {
+      '/WebR/PaginaPrincipal/Productos.php': '/WebR/css/productos.css',
+      '/WebR/PaginaPrincipal/Contactanos.php': '/WebR/css/contactanos.css',
+      '/WebR/PaginaPrincipal/Nosotros.php': '/WebR/css/nosotros.css',
+      '/WebR/PaginaPrincipal/Preguntas.php': '/WebR/css/faq.css',
+      '/WebR/PaginaPrincipal/intranet.php': '/WebR/css/intranet.css',
+    };
+
+    const cssPath = rutasCSS[path];
+    if (cssPath) {
+      const yaExiste = document.querySelector(`link[href="${cssPath}"]`);
+      if (!yaExiste) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = cssPath;
+        document.head.appendChild(link);
+      }
+    }
+  }
+
   function activarEnlacesNav() {
     const links = document.querySelectorAll('.nav-link');
-
     links.forEach(link => {
       link.addEventListener('click', function (e) {
         e.preventDefault();
@@ -221,7 +245,8 @@ document.addEventListener('DOMContentLoaded', function () {
             contenedor.innerHTML = html;
             history.pushState({ page: href }, '', href);
             window.scrollTo(0, 0);
-            activarEnlacesNav(); // 👈 vuelve a aplicar listeners a los nuevos enlaces
+            activarEnlacesNav();
+            cargarCSSSegunRuta(href); // ✅ Carga el CSS correspondiente
           })
           .catch(err => {
             console.error('Error al cargar el contenido:', err);
@@ -231,13 +256,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  activarEnlacesNav(); // 👈 Activamos por primera vez
+  activarEnlacesNav(); // Primera activación
 
-  window.addEventListener('popstate', function (event) {
+  window.addEventListener('popstate', function () {
     const path = location.pathname;
 
     let fetchUrl = '';
-
     switch (path) {
       case '/WebR/PaginaPrincipal/Productos.php':
         fetchUrl = '/WebR/PaginaPrincipal/ProductosAjax.php';
@@ -267,10 +291,12 @@ document.addEventListener('DOMContentLoaded', function () {
         contenedor.innerHTML = html;
         activarEnlacesNav();
         window.scrollTo(0, 0);
+        cargarCSSSegunRuta(path); // ✅ También al navegar con botones del navegador
       });
   });
 });
 </script>
+
 
 
 
