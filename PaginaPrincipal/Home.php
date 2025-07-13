@@ -206,6 +206,7 @@ session_start();  // Verificar sesión del usuario
 document.addEventListener('DOMContentLoaded', function () {
   const btnCatalogo = document.getElementById('btn-catalogo');
   const contenedor = document.getElementById('contenido-dinamico');
+  const homeHTML = contenedor.innerHTML; // Guardamos el contenido inicial
 
   btnCatalogo.addEventListener('click', function (e) {
     e.preventDefault();
@@ -214,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(res => res.text())
       .then(html => {
         contenedor.innerHTML = html;
-        history.pushState(null, '', '/WebR/PaginaPrincipal/Productos.php'); // Cambia la URL sin recargar
+        history.pushState({ page: 'productos' }, '', '/WebR/PaginaPrincipal/Productos.php');
         window.scrollTo(0, 0);
       })
       .catch(err => {
@@ -222,8 +223,26 @@ document.addEventListener('DOMContentLoaded', function () {
         contenedor.innerHTML = '<p>Error al cargar productos.</p>';
       });
   });
+
+  // Manejo del botón Atrás/Adelante del navegador
+  window.onpopstate = function (event) {
+    if (event.state && event.state.page === 'productos') {
+      // Volver a cargar productos sin recargar
+      fetch('/WebR/PaginaPrincipal/ProductosAjax.php')
+        .then(res => res.text())
+        .then(html => {
+          contenedor.innerHTML = html;
+          window.scrollTo(0, 0);
+        });
+    } else {
+      // Volver a mostrar el contenido original del Home
+      contenedor.innerHTML = homeHTML;
+      window.scrollTo(0, 0);
+    }
+  };
 });
 </script>
+
 
 </body>
 </html>
