@@ -39,18 +39,15 @@ session_start();  // Verificar sesión del usuario
 
   <!-- ENCABEZADO -->
   <header>
-    <main id="contenido-dinamico">
-  <!-- Aquí se cargará Productos.php dinámicamente -->
-</main>
     <div class="navbar">
-      <img src="/WebR/img/LOGOTITI.jpeg" alt="Logo TITI SHOP" class="logo">
-      <h3><a href="/WebR/PaginaPrincipal/Home.php" style="color: black;">Inicio</a></h3>
-      <h3><a href="/WebR/PaginaPrincipal/Productos.php" style="color: black;">Productos</a></h3>
-      <h3><a href="/WebR/PaginaPrincipal/Contactanos.php" style="color: black;">Contáctanos</a></h3>
-      <h3><a href="/WebR/PaginaPrincipal/Nosotros.php" style="color: black;">Nosotros</a></h3>
-      <h3><a href="/WebR/PaginaPrincipal/Preguntas.php" style="color: black;">Preguntas Frecuentes</a></h3>
-      <h3><a href="/WebR/PaginaPrincipal/intranet.php" style="color: black;">Intranet</a></h3>
-      
+  <img src="/WebR/img/LOGOTITI.jpeg" alt="Logo TITI SHOP" class="logo">
+  <h3><a href="/WebR/PaginaPrincipal/Home.php" class="nav-link" data-url="/WebR/PaginaPrincipal/Home.php">Inicio</a></h3>
+  <h3><a href="/WebR/PaginaPrincipal/Productos.php" class="nav-link" data-url="/WebR/PaginaPrincipal/ProductosAjax.php">Productos</a></h3>
+  <h3><a href="/WebR/PaginaPrincipal/Contactanos.php" class="nav-link" data-url="/WebR/PaginaPrincipal/Contactanos.php">Contáctanos</a></h3>
+  <h3><a href="/WebR/PaginaPrincipal/Nosotros.php" class="nav-link" data-url="/WebR/PaginaPrincipal/Nosotros.php">Nosotros</a></h3>
+  <h3><a href="/WebR/PaginaPrincipal/Preguntas.php" class="nav-link" data-url="/WebR/PaginaPrincipal/Preguntas.php">Preguntas Frecuentes</a></h3>
+  <h3><a href="/WebR/PaginaPrincipal/intranet.php" class="nav-link" data-url="/WebR/PaginaPrincipal/intranet.php">Intranet</a></h3>
+
       <div class="user-menu">
         <?php if (isset($_SESSION['id_cliente'])): ?>
           <span style="color:black; font-weight: bold; font-size: 20px; margin-right:10px;">
@@ -76,7 +73,7 @@ session_start();  // Verificar sesión del usuario
       </div>
     </div>
   </header>
-
+<main id="contenido-dinamico">
   <!-- BANNER PRINCIPAL -->
   <section class="banner">
     <div class="banner-img">
@@ -85,7 +82,7 @@ session_start();  // Verificar sesión del usuario
     <div class="banner-texto">
       <h1>TiTiShop: Lo mejor en tecnología, con delivery rápido a todo Lima y provincias. ¡Tu próximo gadget está a un clic!</h1>
       <p>TiTiShop: Tecnología que te conecta, precios que te sorprenden.</p>
-     <a href="#" id="btn-catalogo">
+<a href="/WebR/PaginaPrincipal/Productos.php" class="nav-link" data-url="/WebR/PaginaPrincipal/ProductosAjax.php">
   <button>Catálogo</button>
 </a>
 
@@ -157,7 +154,7 @@ session_start();  // Verificar sesión del usuario
       </div>
     </div>
   </section>
-
+ </main>
   <!-- PIE DE PÁGINA -->
   <footer>
     <div class="footer-section">
@@ -204,44 +201,77 @@ session_start();  // Verificar sesión del usuario
 <script src="/WebR/Chatbot/chatbot.js"></script> 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  const btnCatalogo = document.getElementById('btn-catalogo');
   const contenedor = document.getElementById('contenido-dinamico');
-  const homeHTML = contenedor.innerHTML; // Guardamos el contenido inicial
+  const homeHTML = contenedor.innerHTML;
 
-  btnCatalogo.addEventListener('click', function (e) {
-    e.preventDefault();
+  // ✅ Función que aplica los listeners a todos los enlaces .nav-link
+  function activarEnlacesNav() {
+    const links = document.querySelectorAll('.nav-link');
 
-    fetch('/WebR/PaginaPrincipal/ProductosAjax.php')
+    links.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const url = this.getAttribute('data-url');
+        const href = this.getAttribute('href');
+
+        fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            contenedor.innerHTML = html;
+            history.pushState({ page: href }, '', href);
+            window.scrollTo(0, 0);
+            activarEnlacesNav(); // 👈 vuelve a aplicar listeners a los nuevos enlaces
+          })
+          .catch(err => {
+            console.error('Error al cargar el contenido:', err);
+            contenedor.innerHTML = '<p>Error al cargar el contenido.</p>';
+          });
+      });
+    });
+  }
+
+  activarEnlacesNav(); // 👈 Activamos por primera vez
+
+  window.addEventListener('popstate', function (event) {
+    const path = location.pathname;
+
+    let fetchUrl = '';
+
+    switch (path) {
+      case '/WebR/PaginaPrincipal/Productos.php':
+        fetchUrl = '/WebR/PaginaPrincipal/ProductosAjax.php';
+        break;
+      case '/WebR/PaginaPrincipal/Contactanos.php':
+        fetchUrl = '/WebR/PaginaPrincipal/ContactanosAjax.php';
+        break;
+      case '/WebR/PaginaPrincipal/Nosotros.php':
+        fetchUrl = '/WebR/PaginaPrincipal/NosotrosAjax.php';
+        break;
+      case '/WebR/PaginaPrincipal/Preguntas.php':
+        fetchUrl = '/WebR/PaginaPrincipal/PreguntasAjax.php';
+        break;
+      case '/WebR/PaginaPrincipal/intranet.php':
+        fetchUrl = '/WebR/PaginaPrincipal/IntranetAjax.php';
+        break;
+      default:
+        contenedor.innerHTML = homeHTML;
+        activarEnlacesNav();
+        window.scrollTo(0, 0);
+        return;
+    }
+
+    fetch(fetchUrl)
       .then(res => res.text())
       .then(html => {
         contenedor.innerHTML = html;
-        history.pushState({ page: 'productos' }, '', '/WebR/PaginaPrincipal/Productos.php');
+        activarEnlacesNav();
         window.scrollTo(0, 0);
-      })
-      .catch(err => {
-        console.error('Error al cargar productos:', err);
-        contenedor.innerHTML = '<p>Error al cargar productos.</p>';
       });
   });
-
-  // Manejo del botón Atrás/Adelante del navegador
-  window.onpopstate = function (event) {
-    if (event.state && event.state.page === 'productos') {
-      // Volver a cargar productos sin recargar
-      fetch('/WebR/PaginaPrincipal/ProductosAjax.php')
-        .then(res => res.text())
-        .then(html => {
-          contenedor.innerHTML = html;
-          window.scrollTo(0, 0);
-        });
-    } else {
-      // Volver a mostrar el contenido original del Home
-      contenedor.innerHTML = homeHTML;
-      window.scrollTo(0, 0);
-    }
-  };
 });
 </script>
+
 
 
 </body>
