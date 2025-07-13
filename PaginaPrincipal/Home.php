@@ -5,14 +5,15 @@ session_start();  // Verificar sesión del usuario
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiii Shop - Tienda de Electrónica</title>
-    <link rel="stylesheet" href="/WebR/css/Home.css">
-    <link rel="stylesheet" href="/WebR/css/components.css">
-    <link rel="stylesheet" href="/WebR/css/base.css">
-    <link rel="stylesheet" href="/WebR/css/chatbot.css">
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiii Shop - Tienda de Electrónica</title>
+  <link rel="stylesheet" href="/WebR/css/Home.css">
+  <link rel="stylesheet" href="/WebR/css/components.css">
+  <link rel="stylesheet" href="/WebR/css/base.css">
+  <link rel="stylesheet" href="/WebR/css/productos.css"> 
+  <link rel="stylesheet" href="/WebR/css/estilo.css">    
+  <link rel="stylesheet" href="/WebR/css/chatbot.css">
 </head>
 <body>
   <!-- CHATBOT -->
@@ -38,6 +39,9 @@ session_start();  // Verificar sesión del usuario
 
   <!-- ENCABEZADO -->
   <header>
+    <main id="contenido-dinamico">
+  <!-- Aquí se cargará Productos.php dinámicamente -->
+</main>
     <div class="navbar">
       <img src="/WebR/img/LOGOTITI.jpeg" alt="Logo TITI SHOP" class="logo">
       <h3><a href="/WebR/PaginaPrincipal/Home.php" style="color: black;">Inicio</a></h3>
@@ -81,9 +85,10 @@ session_start();  // Verificar sesión del usuario
     <div class="banner-texto">
       <h1>TiTiShop: Lo mejor en tecnología, con delivery rápido a todo Lima y provincias. ¡Tu próximo gadget está a un clic!</h1>
       <p>TiTiShop: Tecnología que te conecta, precios que te sorprenden.</p>
-      <a href="Productos.php">
-        <button>Catálogo</button>
-      </a>
+     <a href="#" id="btn-catalogo">
+  <button>Catálogo</button>
+</a>
+
     </div>
   </section>
 
@@ -197,5 +202,28 @@ session_start();  // Verificar sesión del usuario
     </div>
 </footer>
 <script src="/WebR/Chatbot/chatbot.js"></script> 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const btnCatalogo = document.getElementById('btn-catalogo');
+  const contenedor = document.getElementById('contenido-dinamico');
+
+  btnCatalogo.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    fetch('/WebR/PaginaPrincipal/ProductosAjax.php')
+      .then(res => res.text())
+      .then(html => {
+        contenedor.innerHTML = html;
+        history.pushState(null, '', '/WebR/PaginaPrincipal/Productos.php'); // Cambia la URL sin recargar
+        window.scrollTo(0, 0);
+      })
+      .catch(err => {
+        console.error('Error al cargar productos:', err);
+        contenedor.innerHTML = '<p>Error al cargar productos.</p>';
+      });
+  });
+});
+</script>
+
 </body>
 </html>
