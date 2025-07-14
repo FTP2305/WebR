@@ -49,7 +49,7 @@ session_start();
   </div>
 </header>
 
-  <main>
+  <main class="main-faq">
     <div class="contenedor-central">
         <img src="/WebR/img/dron.jpg" class="img">
         <div class="contenedor-titular">
