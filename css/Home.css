@@ -1,4 +1,4 @@
-.banner {
+.home-section .banner {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -11,15 +11,13 @@
     box-sizing: border-box; 
 }
 
-
-.banner-img { 
+.home-section .banner-img { 
     flex: 1;
     min-height: 200px;
     margin: 10px; 
- 
 }
 
-.tmñbanner { 
+.home-section .tmñbanner { 
     flex: 1;
     height: 500px;
     margin: 10px;
@@ -29,8 +27,7 @@
     min-width: 300px; 
 }
 
-
-.banner-texto {
+.home-section .banner-texto {
     flex: 1;
     margin: 10px;
     padding-left: 30px; 
@@ -38,7 +35,7 @@
     min-width: 300px; 
 }
 
-.banner-texto h1 {
+.home-section .banner-texto h1 {
     font-size: 55px; 
     margin-bottom: 20px; 
     line-height: 1.2; 
@@ -46,14 +43,14 @@
     text-shadow: 1px 1px 2px rgba(0,0,0,0.05); 
 }
 
-.banner-texto p {
+.home-section .banner-texto p {
     font-size: 24px; 
     margin-top: 0; 
     margin-bottom: 20px; 
     color: #6C757D; 
 }
 
-.banner-texto button {
+.home-section .banner-texto button {
     margin-top: 20px;
     padding: 15px 35px; 
     background: #FFD100; 
@@ -68,19 +65,19 @@
     transition: all 0.3s ease; 
 }
 
-.banner-texto button:hover {
+.home-section .banner-texto button:hover {
     background-color: #E6B800; 
     transform: translateY(-3px); 
     box-shadow: 0 8px 20px rgba(255, 209, 0, 0.4);
 }
 
-.marcas {
+.home-section .marcas {
     padding: 40px 20px;
     background-color: #fff;
     text-align: center;
 }
 
-.marcas-grid {
+.home-section .marcas-grid {
     display: flex;
     justify-content: center;
     gap: 200px;
@@ -88,25 +85,25 @@
     flex-wrap: wrap;
 }
 
-.marca {
+.home-section .marca {
     width: 150px;
     height: 150px;
     background-color: #ddd;
     border-radius: 10px;
 }
 
-.tmñmarca {
+.home-section .tmñmarca {
     width: 150px;
     height: 120px;
     background-color: #ddd;
     border-radius: 10px;
 }
 
-.productos {
+.home-section .productos {
     padding: 40px 20px;
 }
 
-.destacado-grande {
+.home-section .destacado-grande {
     background: #ccc;
     height: 400px;
     margin-bottom: 70px;
@@ -116,19 +113,19 @@
     align-items: center;
 }
 
-.tmñproductodestacado {
+.home-section .tmñproductodestacado {
     height: 400px;
     width: 1310px;
 }
 
-.texto-oferta {
+.home-section .texto-oferta {
     color: #333;
     font-size: 32px;
     justify-content: center;
     text-align: center;
 }
 
-.texto-productodestacado {
+.home-section .texto-productodestacado {
     flex: 1;
     font-size: 25px;
     color: #333;
@@ -137,7 +134,7 @@
     align-items: center;
 }
 
-.productos-destacados {
+.home-section .productos-destacados {
     display: flex;
     gap: 40px;
     margin-bottom: 60px;
@@ -146,7 +143,7 @@
     align-items: center;
 }
 
-.productos-destacados div {
+.home-section .productos-destacados div {
     flex: 1;
     background: #ddd;
     height: 350px;
@@ -156,18 +153,18 @@
     flex-direction: row;
 }
 
-.tmñproductoGrande {
+.home-section .tmñproductoGrande {
     height: 350px;
     width: 700PX;
 }
 
-.productos-grid {
+.home-section .productos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
 }
 
-.productos-grid div {
+.home-section .productos-grid div {
     background: #eee;
     height: 200px;
     border-radius: 10px;
@@ -177,24 +174,23 @@
     justify-content: center;
 }
 
-.tmñproducto {
+.home-section .tmñproducto {
     height: 150px;
     width: 250px;
 }
 
-
-.promocion-full {
+.home-section .promocion-full {
     position: relative;
     width: 100%;
     border-radius: 10px;
     margin-bottom: 40px;
 }
 
-.promocion-full img {
+.home-section .promocion-full img {
     width: 100%;
 }
 
-.texto-centrado {
+.home-section .texto-centrado {
     position: absolute;
     top: 30%;
     left: 49%;
@@ -206,7 +202,7 @@
     padding: 5px 15px;
 }
 
-.texto-inferior {
+.home-section .texto-inferior {
     position: absolute;
     bottom: 20%;
     left: 50%;

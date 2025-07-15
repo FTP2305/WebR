@@ -4,7 +4,7 @@ class Conexion {
         $server = "localhost:3306";
         $login = "root";
         $clave = "";
-        $bd = "newdb_titishop";
+        $bd = "bd_titishop";
 
         $cn = mysqli_connect($server, $login, $clave, $bd);
 

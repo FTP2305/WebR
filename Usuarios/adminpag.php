@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') { 
     header('Location: ../intranet.php'); 
     exit();
@@ -25,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_type']) && $_POST
     } elseif ($rol_nombre_seleccionado !== "admin" && $rol_nombre_seleccionado !== "vendedor") {
         $mensaje_registro = "Rol no permitido. Solo 'admin' o 'vendedor' son válidos para el registro.";
     } else {
-        
         $contrasena_hasheada = password_hash($contrasena_plana, PASSWORD_DEFAULT);
         $id_rol = null;
         $sql_get_id_rol = "SELECT id_rol FROM roles WHERE nombre_rol = ?";
@@ -56,15 +54,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_type']) && $_POST
                 if ($existe->num_rows > 0) {
                     $mensaje_registro = "El correo '" . htmlspecialchars($correo) . "' ya está registrado.";
                 } else {
-                   
                     $insert_sql = "INSERT INTO usuarios (nombre_usuario, correo, contrasena, id_rol) VALUES (?, ?, ?, ?)";
                     $stmt_insert = $conn->prepare($insert_sql);
                     if ($stmt_insert) {
-                        
                         $stmt_insert->bind_param("sssi", $nombre, $correo, $contrasena_hasheada, $id_rol);
                         if ($stmt_insert->execute()) {
                             $mensaje_registro = "Usuario '" . htmlspecialchars($nombre) . "' registrado exitosamente.";
-                            
                             $_POST = array(); 
                         } else {
                             $mensaje_registro = "Error al registrar el usuario: " . $stmt_insert->error;
@@ -82,6 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_type']) && $_POST
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -102,8 +98,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_type']) && $_POST
             </a>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="/WebR/PaginaPrincipal/Home.php">Inicio (Tienda)</a></li> <li><a href="../Productos/listar.php">Productos</a></li>
-                    <li><a href="/WebR/Usuarios/historial.php">Ventas</a></li> <li><a href="../intranet.php?logout=true">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a></li>
+                    <li><a href="/WebR/PaginaPrincipal/Home.php">Inicio (Tienda)</a></li>
+                    <li><a href="../Productos/listar.php">Productos</a></li>
+                    <li><a href="/WebR/Usuarios/historial.php">Ventas</a></li>
+                    <li><a href="../intranet.php?logout=true">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a></li>
                 </ul>
             </nav>
         </div>
@@ -136,6 +134,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_type']) && $_POST
                 <a href="../Usuarios/crudUsuarios.php" class="action-button">
                     <div class="icon-circle"><i class="fas fa-user"></i></div>
                     Gestión de Usuarios
+                </a>
+                <!-- NUEVO BOTÓN: REPORTES -->
+                <a href="/WebR/Reportes/reportes.php" class="action-button">
+                    <div class="icon-circle"><i class="fas fa-chart-bar"></i></div>
+                    Reportes
                 </a>
             </div>
         </section>
@@ -210,7 +213,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_type']) && $_POST
 
     <script src="admin.js"></script> 
     <script>
-        
         function showSection(sectionId) {
             document.querySelectorAll('.dashboard-section').forEach(section => {
                 section.style.display = 'none';
@@ -219,7 +221,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_type']) && $_POST
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            
             <?php if (!empty($mensaje_registro) || (isset($_POST['form_type']) && $_POST['form_type'] === 'register_user')): ?>
                 showSection('register-user-section');
             <?php else: ?>
