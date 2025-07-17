@@ -69,5 +69,7 @@ session_start();
 
  <!-- PIE DE PÁGINA -->
   <?php include("../Includes/footer.php"); ?>
+  <script src="/WebR/Chatbot/chatbot.js"></script> 
+  <script src="/WebR/js/ajax-navegacion.js"></script>
 </body>
 </html>

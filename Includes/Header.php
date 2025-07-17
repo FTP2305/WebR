@@ -6,7 +6,7 @@
     <h3><a href="/WebR/PaginaPrincipal/Contactanos.php" class="nav-link" data-url="/WebR/Ajax/ContactanosAjax.php">Contáctanos</a></h3>
     <h3><a href="/WebR/PaginaPrincipal/Nosotros.php" class="nav-link" data-url="/WebR/Ajax/NosotrosAjax.php">Nosotros</a></h3>
     <h3><a href="/WebR/PaginaPrincipal/Preguntas.php" class="nav-link" data-url="/WebR/Ajax/PreguntasAjax.php">Preguntas Frecuentes</a></h3>
-    <h3><a href="/WebR/PaginaPrincipal/Intranet.php" class="nav-link" data-url="/WebR/Ajax/IntranetAjax.php">Intranet</a></h3>
+    <h3><a href="/WebR/PaginaPrincipal/intranet.php" class="nav-link" data-url="/WebR/Ajax/IntranetAjax.php">Intranet</a></h3>
 
     <div class="user-menu">
       <?php if (isset($_SESSION['id_cliente'])): ?>

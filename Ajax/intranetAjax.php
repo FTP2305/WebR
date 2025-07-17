@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <link rel="stylesheet" href="/WebR/css/styleintra.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 
-<!-- 👇 ESTE DIV ES EL CLAVE -->
+<!-- ESTE DIV ES EL CLAVE -->
 <div id="contenido-intranet">
     <div class="container">
         <div class="illustration-section">

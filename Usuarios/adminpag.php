@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_type']) && $_POST
                     <li><a href="/WebR/PaginaPrincipal/Home.php">Inicio (Tienda)</a></li>
                     <li><a href="../Productos/listar.php">Productos</a></li>
                     <li><a href="/WebR/Usuarios/historial.php">Ventas</a></li>
-                    <li><a href="../intranet.php?logout=true">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a></li>
+                    <li><a href="/WebR/Usuarios/intranet.php?logout=true">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a></li>
                 </ul>
             </nav>
         </div>
