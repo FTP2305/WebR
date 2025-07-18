@@ -54,11 +54,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <header>
     <div class="navbar">
       <img src="..//img/LOGOTITI.jpeg" alt="Logo TITI SHOP" class="logo">
-      <h3><a href="..//Home.php" style="color: black;">Inicio</a></h3>
-      <h3><a href="..//Productos.php" style="color: black;">Productos</a></h3>
-      <h3><a href="..//Contactanos.php" style="color: black;">Contáctanos</a></h3>
-      <h3><a href="..//Nosotros.php" style="color: black;">Nosotros</a></h3>
-      <h3><a href="..//Preguntas.php" style="color: black;">Preguntas Frecuentes</a></h3>
+      <h3><a href="/WebR/PaginaPrincipal/Home.php" style="color: black;">Inicio</a></h3>
+      <h3><a href="/WebR/PaginaPrincipal/Productos.php" style="color: black;">Productos</a></h3>
+      <h3><a href="/WebR/PaginaPrincipal/Contactanos.php" style="color: black;">Contáctanos</a></h3>
+      <h3><a href="/WebR/PaginaPrincipal/Nosotros.php" style="color: black;">Nosotros</a></h3>
+      <h3><a href="/WebR/PaginaPrincipal/Preguntas.php" style="color: black;">Preguntas Frecuentes</a></h3>
       <div class="user-menu">
         <a href="Login.php"><img src="..//img/loginsinfondo.png" alt="Usuario" class="icono"></a>
         <a href="#"><img src="..//img/historial de compras.png" alt="Historial" class="icono"></a>

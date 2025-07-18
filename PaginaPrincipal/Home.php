@@ -12,10 +12,11 @@ session_start();  // Verificar sesión del usuario
     <link rel="stylesheet" href="/WebR/css/components.css">
     <link rel="stylesheet" href="/WebR/css/base.css">
     <link rel="stylesheet" href="/WebR/css/chatbot.css">
-  <link rel="stylesheet" href="/WebR/css/productos.css">
-  <link rel="stylesheet" href="/WebR/css/contactanos.css">
-  <link rel="stylesheet" href="/WebR/css/nosotros.css"> 
-  <link rel="stylesheet" href="/WebR/css/faq.css">
+    <link rel="stylesheet" href="/WebR/css/productos.css">
+    <link rel="stylesheet" href="/WebR/css/contactanos.css">
+    <link rel="stylesheet" href="/WebR/css/nosotros.css"> 
+    <link rel="stylesheet" href="/WebR/css/faq.css">
+    <link rel="stylesheet" href="/WebR/css/estilo.css">
     
 </head>
 <body>

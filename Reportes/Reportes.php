@@ -36,9 +36,9 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
             <p>Selecciona un tipo de reporte que deseas visualizar:</p>
 
             <div class="action-buttons">
-                <a href="reporte.php" class="action-button">
-                    <div class="icon-circle"><i class="fas fa-user-tie"></i></div>
-                    Ventas por Trabajador
+                <a href="reporte_clientes.php" class="action-button">
+                    <div class="icon-circle"><i class="fas fa-shop-tie"></i></div>
+                    Clientes frecuentes
                 </a>
 
                 <a href="reporte_categoria.php" class="action-button">
@@ -46,9 +46,9 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
                     Ventas por Categoría
                 </a>
 
-                <a href="reporte_marca.php" class="action-button">
+                <a href="reporte_productos.php" class="action-button">
                     <div class="icon-circle"><i class="fas fa-industry"></i></div>
-                    Ventas por Marca
+                    Ventas por Producto
                 </a>
             </div>
         </section>
