@@ -83,7 +83,7 @@ session_start();  // Verificar sesión del usuario
       <img src="/WebR/img/BANER_HOME.jpg" alt="Banner TiTiShop" class="tmñbanner">
     </div>
     <div class="banner-texto">
-      <h1>TiTiShop: Lo mejor en tecnología, con delivery rápido a todo Lima y provincias. ¡Tu próximo gadget está a un clic!</h1>
+      <h1>TiTiShop: Lo mejor en tecnología,. con delivery rápido a todo Lima y provincias. ¡Tu próximo gadget está a un clic!</h1>
       <p>TiTiShop: Tecnología que te conecta, precios que te sorprenden.</p>
       <a href="Productos.php">
         <button>Catálogo</button>
